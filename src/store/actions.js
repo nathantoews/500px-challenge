@@ -6,6 +6,7 @@ export const getPhotos = (value = { feature: "", page: "1" }) => dispatch => {
       params: {
         page: value.page,
         feature: value.feature,
+        image_size: 600,
         consumer_key: process.env.REACT_APP_CONSUMER_KEY
       }
     })

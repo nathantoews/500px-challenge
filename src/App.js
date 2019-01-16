@@ -24,10 +24,8 @@ class AppComponent extends Component {
     this.props.getPhotos();
   }
   render() {
-    console.log(process.env.REACT_APP_CONSUMER_KEY);
     return (
       <div className="row mt-5">
-        <h1>500 px Demo</h1>
         <Route path="/gallery" component={Gallery} />
         {!_.isEmpty(this.props.state) && (
           <Route path="/photo/:id/:name" render={props => <PhotoDetails {...props} />} />

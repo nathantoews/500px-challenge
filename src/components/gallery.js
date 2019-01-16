@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import logo from "../logo.svg";
 import { getPhotos } from "../store/actions";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Photo from "./photo.js";
 
@@ -49,20 +50,34 @@ class ImageGallery extends Component {
 
   render() {
     return (
-      <section className="container">
-        <h2>Select a Filter</h2>
-        {/* prettier-ignore */}
-        <select className="feature-select" onChange={this.handleChange}>
-          <option className="feature" value="Popular">Popular</option>
-          <option className="feature" value="highest_rated">Highest Rated</option>
-          <option className="feature" value="upcoming">Upcoming</option>
-          <option className="feature" value="editors">Editors</option>
-          <option className="feature" value="fresh_today">Fresh Today</option>
-          <option className="feature" value="fresh_yesterday">Fresh Yeseterday</option>
-          <option className="feature" value="fresh_week">Fresh this Week</option> 
-        </select>
+      <section className="">
+        {/* Header Section  */}
+
+        <header className="main-header">
+          <h1 className="logo">
+            <img alt="main logo" src={logo} />
+          </h1>
+        </header>
+
+        {/* Navigation Section */}
+
+        <nav className="gallery-nav container">
+          {/* prettier-ignore */}
+          <select className="feature-select" onChange={this.handleChange}>
+            <option className="feature" default value="Popular">Popular</option>
+            <option className="feature" value="highest_rated">Highest Rated</option>
+            <option className="feature" value="upcoming">Upcoming</option>
+            <option className="feature" value="editors">Editors Picks</option>
+            <option className="feature" value="fresh_today">Fresh Today</option>
+            <option className="feature" value="fresh_yesterday">Fresh Yeseterday</option>
+            <option className="feature" value="fresh_week">Fresh this Week</option> 
+          </select>
+        </nav>
+
+        {/* Gallery Section  */}
+
         {!_.isEmpty(this.props.photos) && (
-          <section className="gallery">
+          <section className="gallery container">
             <Route
               path="/gallery"
               render={props => {
