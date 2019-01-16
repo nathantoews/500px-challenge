@@ -1,18 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getPhotos, getSeriesFull } from "../store/actions";
+import { getPhotos } from "../store/actions";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Photo from "./photo.js";
+
 import _ from "lodash";
 
 /* ===============
 Componentn Imports
 =============== */
-
-// const mapDispatchToProps = {
-//   addArticle: article => addArticle(article)
-// };
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -38,13 +35,10 @@ class ImageGallery extends Component {
     // this.handleChange = this.handleChange.bind(this);
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
-    this.props.getPhotos({ feature: this.props.match.params.id });
-  }
   handleChange = event => {
     let _event = event.target;
     new Promise((resolve, reject) => {
-      resolve(this.props.history.push("/feature/" + event.target.value));
+      resolve(this.props.history.push("/gallery/" + event.target.value));
     }).then(() => {
       this.props.getPhotos({ feature: _event.value });
     });
@@ -55,7 +49,7 @@ class ImageGallery extends Component {
 
   render() {
     return (
-      <section className="gallery-container">
+      <section className="container">
         <h2>Select a Filter</h2>
         {/* prettier-ignore */}
         <select className="feature-select" onChange={this.handleChange}>
@@ -70,16 +64,13 @@ class ImageGallery extends Component {
         {!_.isEmpty(this.props.photos) && (
           <section className="gallery">
             <Route
-              path="/feature/:id"
+              path="/gallery"
               render={props => {
-                return this.props.photos.map(el => (
-                  <Photo key={el.id} getPhotos={this.props.getPhotos} info={el} {...props} />
-                ));
+                return this.props.photos.map(el => <Photo key={el.id} info={el} {...props} />);
               }}
             />
           </section>
         )}
-
         <section className="pagination">
           <div onClick={() => this.pageChange(-1)}>previous</div>
           <h5>{this.props.page}</h5>

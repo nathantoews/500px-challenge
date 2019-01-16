@@ -6,22 +6,22 @@ const mapStateToProps = state => {
   return {};
 };
 
-class SeriesInfo extends Component {
+class Photo extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount() {}
+  imageDetails = () => {
+    this.props.history.push(this.props.info.url);
+  };
   render() {
     return (
-      <article>
-        <div className="image" style={{ backgroundImage: `url(${this.props.info.image_url[0]})` }} />
-        {/* <h3 className="title">{this.props.info.name}</h3>
-        <p className="desc" dangerouslySetInnerHTML={{ __html: this.props.info.description }} /> */}
+      <article onClick={this.imageDetails} className="card">
+        <div className="card__image" style={{ backgroundImage: `url(${this.props.info.image_url[0]})` }} />
       </article>
     );
   }
 }
 
-const SingleSeries = connect(mapStateToProps)(SeriesInfo);
+const SinglePhoto = connect(mapStateToProps)(Photo);
 
-export default SingleSeries;
+export default SinglePhoto;
