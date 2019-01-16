@@ -1,5 +1,5 @@
 /* ===============
-500px HEADER STYLES
+500px HEADER AND FOOTER STYLES
 =============== */
 
 .main-header {
@@ -11,6 +11,21 @@
   box-shadow: 2px 3px 10px 0 rgba(0, 0, 0, 0.1);
   h1.logo {
     width: 100px;
+  }
+}
+
+.main-footer {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #46464630;
+  height: 40px;
+  color: #46464630;
+  background: #e3e3e3;
+  padding: 0 30px;
+  .myname {
+    font-size: 16px;
+    font-weight: bold;
   }
 }
 
@@ -85,6 +100,53 @@ GALLERY STYlES
     color: #464646;
     &:focus {
       outline: none;
+    }
+  }
+}
+
+/* ===============
+PAGINATION STYLES
+=============== */
+
+.chev-down {
+  fill: #c5c5c5;
+  transition: all 0.2s ease;
+}
+
+.pagination {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  justify-content: space-between;
+  .page-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #464646;
+  }
+  .prev {
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+    transform: rotate(90deg);
+    &:hover {
+      .chev-down {
+        transition: all 0.2s ease;
+        fill: #464646;
+      }
+    }
+  }
+  .next {
+    cursor: pointer;
+    height: 35px;
+    width: 35px;
+    transform: rotate(-90deg);
+    &:hover {
+      .chev-down {
+        transition: all 0.2s ease;
+        fill: #464646;
+      }
     }
   }
 }

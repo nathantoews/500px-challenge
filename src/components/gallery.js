@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import logo from "../logo.svg";
 import { getPhotos } from "../store/actions";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Photo from "./photo.js";
+import Chevron from "./chevron.js";
 
 import _ from "lodash";
 
@@ -38,11 +38,7 @@ class ImageGallery extends Component {
   }
   handleChange = event => {
     let _event = event.target;
-    new Promise((resolve, reject) => {
-      resolve(this.props.history.push("/gallery/" + event.target.value));
-    }).then(() => {
-      this.props.getPhotos({ feature: _event.value });
-    });
+    this.props.getPhotos({ feature: _event.value });
   };
   pageChange = num => {
     this.props.getPhotos({ feature: this.props.feature, page: this.props.page + num });
@@ -51,14 +47,6 @@ class ImageGallery extends Component {
   render() {
     return (
       <section className="">
-        {/* Header Section  */}
-
-        <header className="main-header">
-          <h1 className="logo">
-            <img alt="main logo" src={logo} />
-          </h1>
-        </header>
-
         {/* Navigation Section */}
 
         <nav className="gallery-nav container">
@@ -79,7 +67,7 @@ class ImageGallery extends Component {
         {!_.isEmpty(this.props.photos) && (
           <section className="gallery container">
             <Route
-              path="/gallery"
+              path="/"
               render={props => {
                 return this.props.photos.map(el => <Photo key={el.id} info={el} {...props} />);
               }}
@@ -87,9 +75,14 @@ class ImageGallery extends Component {
           </section>
         )}
         <section className="pagination">
-          <div onClick={() => this.pageChange(-1)}>previous</div>
-          <h5>{this.props.page}</h5>
-          <div onClick={() => this.pageChange(1)}>next</div>
+          <div className="prev" onClick={() => this.pageChange(-1)}>
+            <Chevron />
+          </div>
+          <h5 className="page-number">{this.props.page}</h5>
+          <div className="next" onClick={() => this.pageChange(1)}>
+            {" "}
+            <Chevron />
+          </div>
         </section>
       </section>
     );
