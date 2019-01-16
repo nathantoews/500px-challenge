@@ -4,6 +4,7 @@ import { getPhotos, getSeriesFull } from "../store/actions";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Photo from "./photo.js";
+import _ from "lodash";
 
 /* ===============
 Componentn Imports
@@ -21,7 +22,9 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    photos: state.imageGallery
+    photos: state.imageGallery.photos,
+    page: state.imageGallery.current_page,
+    feature: state.imageGallery.feature
   };
 };
 
@@ -36,16 +39,20 @@ class ImageGallery extends Component {
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    this.props.getPhotos();
+    this.props.getPhotos({ feature: this.props.match.params.id });
   }
   handleChange = event => {
     let _event = event.target;
     new Promise((resolve, reject) => {
       resolve(this.props.history.push("/feature/" + event.target.value));
     }).then(() => {
-      this.props.getPhotos(_event.value);
+      this.props.getPhotos({ feature: _event.value });
     });
   };
+  pageChange = num => {
+    this.props.getPhotos({ feature: this.props.feature, page: this.props.page + num });
+  };
+
   render() {
     return (
       <section className="gallery-container">
@@ -60,11 +67,24 @@ class ImageGallery extends Component {
           <option className="feature" value="fresh_yesterday">Fresh Yeseterday</option>
           <option className="feature" value="fresh_week">Fresh this Week</option> 
         </select>
-        <ul className="gallery">
-          {this.props.photos.map(el => (
-            <Photo key={el.id} info={el} />
-          ))}
-        </ul>
+        {!_.isEmpty(this.props.photos) && (
+          <section className="gallery">
+            <Route
+              path="/feature/:id"
+              render={props => {
+                return this.props.photos.map(el => (
+                  <Photo key={el.id} getPhotos={this.props.getPhotos} info={el} {...props} />
+                ));
+              }}
+            />
+          </section>
+        )}
+
+        <section className="pagination">
+          <div onClick={() => this.pageChange(-1)}>previous</div>
+          <h5>{this.props.page}</h5>
+          <div onClick={() => this.pageChange(1)}>next</div>
+        </section>
       </section>
     );
   }
