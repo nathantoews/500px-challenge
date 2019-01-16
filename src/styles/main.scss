@@ -1,0 +1,15 @@
+/* ===============
+BASE IMPORTS
+=============== */
+
+@import "./base/reset";
+@import "./base/global";
+@import "./base/variables";
+@import "./base/fonts";
+@import "./base/mixins";
+
+/* ===============
+COMPONENT IMPORTS
+=============== */
+
+@import "./components/gallery.scss";

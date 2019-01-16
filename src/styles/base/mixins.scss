@@ -1,0 +1,23 @@
+// BREAKPOINT MIXIN //
+
+@mixin breakpoint($point) {
+  @if $point == xs {
+    @media screen and (max-width: 35.5em) {
+      @content;
+    }
+  } @else if $point == sm {
+    @media screen and (max-width: 48em) {
+      @content;
+    }
+  } @else if $point == md {
+    @media screen and (max-width: 64em) {
+      @content;
+    }
+  } @else if $point == lg {
+    @media screen and (max-width: 80em) {
+      @content;
+    }
+  }
+}
+
+// REM MIXIN //
