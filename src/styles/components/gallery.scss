@@ -15,6 +15,7 @@
 }
 
 .main-footer {
+  width: 100%;
   margin-top: 20px;
   display: flex;
   align-items: center;
@@ -35,6 +36,7 @@ GALLERY STYlES
 
 .gallery {
   width: 100%;
+  padding: 0 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -76,15 +78,13 @@ GALLERY STYlES
       height: 50px;
       width: 100%;
       padding-left: 1rem;
-      .name {
-      }
     }
   }
 }
 
 .gallery-nav {
-  padding: 2%;
-  padding-left: 7px;
+  padding: 20px;
+  padding-left: 37px;
   .feature-select {
     width: 200px;
     height: 30px;
@@ -114,6 +114,7 @@ PAGINATION STYLES
 }
 
 .pagination {
+  max-width: 1080px;
   width: 80%;
   margin: 0 auto;
   display: flex;

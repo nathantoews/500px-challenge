@@ -80,7 +80,6 @@ class ImageGallery extends Component {
           </div>
           <h5 className="page-number">{this.props.page}</h5>
           <div className="next" onClick={() => this.pageChange(1)}>
-            {" "}
             <Chevron />
           </div>
         </section>

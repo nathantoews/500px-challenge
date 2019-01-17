@@ -18,6 +18,15 @@ const imageGallery = (state = [], action) => {
   }
 };
 
+const singleImage = (state = [], action) => {
+  switch (action.type) {
+    case "UPDATE_IMAGE":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 // const series = (state = [], action) => {
 //   switch (action.type) {
 //     case "UPDATE_SERIES":
@@ -37,7 +46,8 @@ const imageGallery = (state = [], action) => {
 // };
 
 const rootReducer = combineReducers({
-  imageGallery
+  imageGallery,
+  singleImage
 });
 
 export default rootReducer;
