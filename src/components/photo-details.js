@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 import { getSinglePhoto } from "../store/actions";
-import { Stats } from "fs";
 
 const mapDispatchToProps = dispatch => {
   return {

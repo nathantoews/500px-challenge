@@ -1,3 +1,18 @@
+Hello!
+
+The scripts needed to run this project locally are below. The project was built with
+create-react-app (as a standard base for react)
+react router (added for routing between pages)
+redux ( for managing state across calls and to pull information to different routes)
+axios ( this is my preffered Promise based HTTP client for making calls)
+lodash ( always comes in handy when working with SPA style projects)
+sass ( my preffered css style and structure)
+redux thunk and prop types (these are both tools I find very helpful when working with redux and passing information between)
+
+This project is hosted at http://nathantoews.com/500px
+
+Project Owner - Nathan Toews
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
