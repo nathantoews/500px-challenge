@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router basename={"/500px"}>
       <Route path="/" component={App} />
     </Router>
   </Provider>,

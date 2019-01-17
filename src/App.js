@@ -8,6 +8,7 @@ import { getPhotos } from "./store/actions";
 import _ from "lodash";
 import logo from "./logo.svg";
 import { Link } from "react-router-dom";
+import Chevron from "./components/chevron.js";
 
 const mapStateToProps = state => {
   return {
@@ -36,6 +37,11 @@ class AppComponent extends Component {
               <img alt="main logo" src={logo} />
             </h1>
           </Link>
+          {this.props.location.pathname.includes("photo") && (
+            <Link className="back-button" to="/">
+              <Chevron /> Back
+            </Link>
+          )}
         </header>
 
         {/* Single Image Section */}

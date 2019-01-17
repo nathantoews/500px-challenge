@@ -38,13 +38,16 @@ class PhotoInfo extends Component {
         )}
         <section className="photo-details__info">
           <h3 className="title">{this.state.details.name}</h3>
-          <section className="photo-details__camera">
-            <h3>Photo Details</h3>
-            <ul>
-              <li>{this.state.details.camera}</li>
-              <li>{this.state.details.lens}</li>
-            </ul>
-          </section>
+          {!_.isEmpty(this.state.details.camera) && (
+            <section className="photo-details__camera">
+              <h3>Photo Details</h3>
+              <ul>
+                <li>{this.state.details.camera}</li>
+                <li>{this.state.details.lens}</li>
+              </ul>
+            </section>
+          )}
+
           <p className="desc" dangerouslySetInnerHTML={{ __html: this.state.details.description }} />
         </section>
 
